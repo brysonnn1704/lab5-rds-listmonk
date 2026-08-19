@@ -2,9 +2,9 @@
 
 ## 1. Project Overview
 
-This project deploys the Listmonk application from Lab 4 on an AWS EC2 instance and connects it to an Amazon RDS PostgreSQL database.
+This project deploys the Listmonk application on an AWS EC2 instance and connects it to an Amazon RDS PostgreSQL database.
 
-The application demonstrates all CRUD operations:
+The application demonstrates CRUD operations:
 
 - Create
 - Read
@@ -15,7 +15,7 @@ The application demonstrates all CRUD operations:
 
 User
 ↓
-EC2 – Listmonk Application
+AWS EC2 – Listmonk
 ↓
 PostgreSQL : 5432
 ↓
@@ -25,90 +25,95 @@ Amazon RDS PostgreSQL
 
 Application: Listmonk
 
-EC2 Instance:
-listmonk-lab4
+EC2 Instance: `listmonk-lab4`
 
 Application URL:
-http://3.108.234.182
+
+http://65.2.75.226
+
+Application Port: `9000`
 
 ## 4. RDS Configuration
 
 Database Engine: PostgreSQL
 
-RDS Instance:
-listmonk-postgres-rds
+RDS Instance: `listmonk-postgres-rds`
 
-Database:
-listmonk
+Database: `listmonk`
 
-Port:
-5432
+Port: `5432`
 
 The Listmonk application connects to the PostgreSQL database hosted on Amazon RDS.
 
 ## 5. Database Connection
 
-The Listmonk configuration was modified to use the RDS PostgreSQL endpoint instead of the local PostgreSQL database.
+The Listmonk configuration was modified to use the Amazon RDS PostgreSQL endpoint instead of a local database.
 
-The database connection uses:
+Connection configuration:
 
 - RDS endpoint
-- PostgreSQL port 5432
-- Database name: listmonk
-- Database user: listmonk
-- SSL mode: require
+- PostgreSQL port: 5432
+- Database: `listmonk`
+- User: `listmonk`
+- SSL mode: `require`
 
-Passwords and other sensitive credentials are not included in this repository.
+Database passwords and other sensitive credentials are not included in this repository.
 
 ## 6. Security Configuration
 
-The RDS security group allows PostgreSQL traffic on port 5432 only from the EC2 security group.
+The EC2 security group allows HTTP traffic for the Listmonk application.
 
-RDS Security Group:
-listmonk-rds-sg
+The RDS security group allows PostgreSQL traffic on port `5432` from the EC2 security group.
 
-EC2 Security Group:
-listmonk-lab4-sg
-
-No public 0.0.0.0/0 rule is used for PostgreSQL database access.
+Database access is therefore restricted and is not exposed through a public PostgreSQL rule.
 
 ## 7. CRUD Demonstration
 
 ### Create
 
-A new Listmonk list named `Lab5 CRUD Test` was created through the running EC2 application.
+A new Listmonk list was created through the running application.
 
 ### Read
 
-The created list was displayed in the Listmonk Lists page.
+The created list was displayed on the Listmonk Lists page.
 
 ### Update
 
-The list was updated from:
-
-`Lab5 CRUD Test`
-
-to:
-
-`Lab5 CRUD Test Updated`
+The created list was modified through the Listmonk application.
 
 ### Delete
 
-The updated list was deleted successfully through the Listmonk application.
+The updated list was deleted successfully.
 
 ## 8. Evidence
 
-The project evidence includes:
+Screenshots are available in the `screenshots/` directory.
 
-1. RDS PostgreSQL deployment
-2. RDS security group configuration
-3. EC2 Listmonk application
-4. Create and Read operation
-5. Update operation
-6. Delete operation
+Evidence includes:
 
-## 9. Conclusion
+1. EC2 instance running
+2. RDS PostgreSQL deployed
+3. RDS security group configuration
+4. Listmonk application running
+5. Create operation
+6. Read operation
+7. Update operation
+8. Delete operation
 
-The Lab 4 Listmonk application was successfully connected to an Amazon RDS PostgreSQL database.
+## 9. Configuration Files
 
-The application successfully demonstrates Create, Read, Update and Delete operations using the deployed database.
+Example configuration:
+
+`config/config.example.toml`
+
+Deployment information:
+
+`config/deployment.md`
+
+Actual database credentials are intentionally excluded.
+
+## 10. Conclusion
+
+The Listmonk application was successfully deployed on AWS EC2 and connected to an Amazon RDS PostgreSQL database.
+
+The application demonstrates Create, Read, Update and Delete operations using the deployed database.
