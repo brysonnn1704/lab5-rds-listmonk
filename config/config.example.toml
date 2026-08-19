@@ -1,0 +1,13 @@
+[app]
+address = "0.0.0.0:9000"
+
+[db]
+host = "YOUR_RDS_ENDPOINT"
+port = 5432
+user = "listmonk"
+password = "YOUR_DATABASE_PASSWORD"
+database = "listmonk"
+ssl_mode = "require"
+max_open = 10
+max_idle = 5
+max_lifetime = "300s"
